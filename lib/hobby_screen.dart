@@ -69,6 +69,7 @@ class HobbyScreen extends StatelessWidget {
                 width: double.infinity,
                 fit: BoxFit.cover,
 
+                /// if some how the image doesn't come up
                 errorBuilder: (context, error, stackTrace) {
                   return const Icon(
                     Icons.broken_image,
