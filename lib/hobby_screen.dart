@@ -1,64 +1,99 @@
-// ignore_for_file: sort_child_properties_last
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class HomeScreen extends StatelessWidget {
+class HobbyScreen extends StatelessWidget {
+  const HobbyScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
+      // 1. Background Color
       backgroundColor: Colors.green,
+      // 2. App Bar
       appBar: AppBar(
         backgroundColor: Colors.amber,
-        shadowColor: Colors.black,
+        centerTitle: true,
+
         title: Text(
-          'Flutter Batch-02',
-          style: TextStyle(fontFamily: 'EduQLDHand'),
+          'My Favorite Hobby',
+          style: GoogleFonts.poppins(
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),
         ),
       ),
 
-      body: Center(
+      // 3. Body
+      body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16),
+
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+
             children: [
+              // Hobby Title
               Text(
-                'My hobby',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
+                'Reading Books',
+                style: GoogleFonts.poppins(
                   fontSize: 32,
+                  fontWeight: FontWeight.bold,
                   color: Colors.white,
-                  fontFamily: 'EduQLDHand',
                 ),
               ),
-              SizedBox(height: 16),
+
+              const SizedBox(height: 16),
+
+              // Hobby Description
               Text(
-                "I don't really know what my hobbies are yet. If I'm being completely honest, my favorite thing to do in my free time is just sleep and recharge.",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontFamily: 'EduQLDHand',
-                  fontSize: 24,
-                ),
+                'My favorite hobby is reading books. '
+                'I love reading books in my free time. '
+                'Reading helps me learn new things and '
+                'improve my knowledge. It also makes me '
+                'feel relaxed and happy. I enjoy reading '
+                'storybooks, science books, and technology '
+                'articles. Reading is an important part '
+                'of my daily life.',
                 textAlign: TextAlign.justify,
+                style: GoogleFonts.poppins(fontSize: 18, color: Colors.white),
               ),
-              SizedBox(height: 8),
 
-              /// you can add image from assets or network
+              const SizedBox(height: 20),
 
+              // Hobby Image
+              // you can add image from asset or network using image.asset or image.network
               Image.network(
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQG5h7TiqhDqgujXrxiUf4rwFfw-Izg5tqNrs31U48JxdQ4kBs9wF5LS58&s=10',
+                'https://images.unsplash.com/photo-1507842217343-583bb7270b66',
+                height: 220,
+                width: double.infinity,
+                fit: BoxFit.cover,
+
+                errorBuilder: (context, error, stackTrace) {
+                  return const Icon(
+                    Icons.broken_image,
+                    size: 80,
+                    color: Colors.white,
+                  );
+                },
               ),
 
-              SizedBox(height: 24),
+              const SizedBox(height: 24),
+
+              // Submit Button
               ElevatedButton(
                 onPressed: () {},
-                child: Text('Submit My Hobby'),
+
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.red,
                   foregroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
+                ),
+
+                child: Text(
+                  'Submit My Hobby',
+                  style: GoogleFonts.poppins(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ),
@@ -66,10 +101,16 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
+
+      // 4. Floating Action Button
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.red,
-        onPressed: () {},
-        child: Icon(Icons.add, color: Colors.white),
+
+        onPressed: () {
+          /// fire something
+        },
+
+        child: const Icon(Icons.add, color: Colors.white),
       ),
     );
   }
