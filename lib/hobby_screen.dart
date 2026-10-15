@@ -13,7 +13,6 @@ class HobbyScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.amber,
         centerTitle: true,
-
         title: Text(
           'My Favorite Hobby',
           style: GoogleFonts.poppins(
