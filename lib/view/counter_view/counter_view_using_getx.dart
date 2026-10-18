@@ -1,17 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class CounterController extends GetxController {
-  var counter = 0.obs;
-
-  void increment() {
-    counter.value++;
-  }
-
-  void decrement() {
-    counter.value--;
-  }
-}
+import 'controller/count_controller.dart';
 
 class CounterScreenUsingGet extends StatelessWidget {
   const CounterScreenUsingGet({super.key});
