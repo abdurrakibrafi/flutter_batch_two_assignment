@@ -25,11 +25,15 @@ class GeneralUsagesOfStateView extends StatelessWidget {
               Buttons.google,
               text: "Sign up with Google",
 
-              /// fire hoi ekhane theke
               onPressed: () {
 
 
                 /// bottom sheet using get-x
+
+
+
+
+
 
                 /// snackbar using get-x
                 Get.snackbar(
