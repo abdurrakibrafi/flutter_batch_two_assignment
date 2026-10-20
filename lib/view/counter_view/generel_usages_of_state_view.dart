@@ -26,22 +26,37 @@ class GeneralUsagesOfStateView extends StatelessWidget {
               text: "Sign up with Google",
 
               onPressed: () {
-
-
                 /// bottom sheet using get-x
 
 
 
+                /// bottom sheet using get-x
 
+                Get.bottomSheet(
+                  Container(
 
+                    height: 200,
+                    width: double.infinity,
+                    padding: EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(20),
+                        topRight: Radius.circular(20),
+                      ),
+                    ),
+
+                    child: Text("Hello from bottom sheet"),
+                  ),
+                );
 
                 /// snackbar using get-x
-                Get.snackbar(
-                  backgroundColor: Colors.green,
-                  snackPosition: SnackPosition.BOTTOM,
-                  "Success",
-                  "Product added to cart",
-                );
+                // Get.snackbar(
+                //   backgroundColor: Colors.green,
+                //   snackPosition: SnackPosition.BOTTOM,
+                //   "Success",
+                //   "Product added to cart",
+                // );
               },
             ),
           ],
