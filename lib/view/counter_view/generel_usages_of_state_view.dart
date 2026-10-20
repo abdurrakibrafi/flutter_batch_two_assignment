@@ -30,25 +30,28 @@ class GeneralUsagesOfStateView extends StatelessWidget {
 
 
 
+
+
+
                 /// bottom sheet using get-x
 
-                Get.bottomSheet(
-                  Container(
-
-                    height: 200,
-                    width: double.infinity,
-                    padding: EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(20),
-                        topRight: Radius.circular(20),
-                      ),
-                    ),
-
-                    child: Text("Hello from bottom sheet"),
-                  ),
-                );
+                // Get.bottomSheet(
+                //   Container(
+                //
+                //     height: 200,
+                //     width: double.infinity,
+                //     padding: EdgeInsets.all(20),
+                //     decoration: BoxDecoration(
+                //       color: Colors.white,
+                //       borderRadius: BorderRadius.only(
+                //         topLeft: Radius.circular(20),
+                //         topRight: Radius.circular(20),
+                //       ),
+                //     ),
+                //
+                //     child: Text("Hello from bottom sheet"),
+                //   ),
+                // );
 
                 /// snackbar using get-x
                 // Get.snackbar(

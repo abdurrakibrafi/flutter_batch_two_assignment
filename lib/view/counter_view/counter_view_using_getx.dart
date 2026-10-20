@@ -8,10 +8,12 @@ class CounterScreenUsingGet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final CounterController controller = Get.put(CounterController());
+    /// instance of controller
+    final CounterController counterController = Get.put(CounterController());
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.green,
         title: const Text("Counter App using Getx"),
         centerTitle: true,
       ),
@@ -19,9 +21,10 @@ class CounterScreenUsingGet extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            /// minus button
             ElevatedButton(
               onPressed: () {
-                controller.decrement();
+                counterController.decrement();
               },
               child: const Icon(Icons.remove),
             ),
@@ -30,16 +33,17 @@ class CounterScreenUsingGet extends StatelessWidget {
 
             Obx(
               () => Text(
-                "${controller.counter.value}",
+                "${counterController.counter.value}",
                 style: const TextStyle(fontSize: 30),
               ),
             ),
 
             const SizedBox(width: 20),
 
+            /// plus button
             ElevatedButton(
               onPressed: () {
-                controller.increment();
+                counterController.increment();
               },
               child: const Icon(Icons.add),
             ),
