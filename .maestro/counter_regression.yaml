@@ -1,0 +1,15 @@
+appId: com.example.flutterBatchTwoAssignment
+name: Counter increment and decrement regression
+---
+- launchApp:
+    clearState: true
+- assertVisible: "0"
+- tapOn:
+    point: "263,496"
+- assertVisible: "1"
+- tapOn:
+    point: "263,496"
+- assertVisible: "2"
+- tapOn:
+    point: "138,496"
+- assertVisible: "1"

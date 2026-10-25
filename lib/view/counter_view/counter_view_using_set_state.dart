@@ -18,6 +18,8 @@ class _CounterScreenState extends State<CounterScreen> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+
+
             ElevatedButton(
               onPressed: () {
                 setState(() {
@@ -28,6 +30,11 @@ class _CounterScreenState extends State<CounterScreen> {
             ),
 
             const SizedBox(width: 20),
+
+
+
+
+
 
             Text("$counter", style: const TextStyle(fontSize: 30)),
 

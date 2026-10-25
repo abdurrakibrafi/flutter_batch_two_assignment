@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flutter Counter App - Maestro Run Report</title>
+  <style>
+    body { font: 16px/1.5 system-ui, sans-serif; max-width: 960px; margin: 2rem auto; padding: 0 1rem; color: #202124; }
+    h1, h2 { line-height: 1.2; }
+    .blocked { color: #8a4b00; font-weight: 700; }
+    .summary { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .summary div { padding: .8rem 1rem; border: 1px solid #dadce0; border-radius: .5rem; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { border: 1px solid #dadce0; padding: .65rem; text-align: left; vertical-align: top; }
+    th { background: #f5f6f7; }
+    code { overflow-wrap: anywhere; }
+    img { max-width: 360px; height: auto; border: 1px solid #dadce0; }
+  </style>
+</head>
+<body>
+  <h1>Flutter Counter App — Maestro Run Report</h1>
+  <p><strong>Date:</strong> 2026-10-24<br>
+     <strong>Simulator:</strong> iPhone 16 Pro, iOS 18.2 (UDID <code>069767CC-3008-4AB6-BC00-F12882899966</code>)<br>
+     <strong>App ID:</strong> <code>com.example.flutterBatchTwoAssignment</code></p>
+
+  <div class="summary">
+    <div>Passed: <strong>0</strong></div>
+    <div>Blocked: <strong>4</strong></div>
+    <div>Confirmed app bugs: <strong>0</strong></div>
+    <div>Commands executed: <strong>0</strong></div>
+  </div>
+
+  <h2>Run results</h2>
+  <p class="blocked">All four flows were blocked before execution. Maestro returned
+    “Device became unreachable during deviceInfo.” The folder run reported
+    <code>success: false</code> and <code>total_commands_executed: 0</code>.
+    This is a simulator connectivity issue; it is not an application test failure.</p>
+  <table>
+    <thead><tr><th>Flow</th><th>Expected behavior</th><th>Outcome</th></tr></thead>
+    <tbody>
+      <tr><td>counter_increment.yaml</td><td>0 → 1 after increment tap</td><td class="blocked">Blocked before commands</td></tr>
+      <tr><td>counter_decrement.yaml</td><td>0 → -1 after decrement tap</td><td class="blocked">Blocked before commands</td></tr>
+      <tr><td>counter_regression.yaml</td><td>0 → 1 → 2 → 1</td><td class="blocked">Blocked before commands</td></tr>
+      <tr><td>smoke.yaml</td><td>Counter app title visible</td><td class="blocked">Blocked before commands</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Failure artifacts</h2>
+  <p>No app interaction failed, so there was no failing screen to capture. The following
+    image is a normal initial-state diagnostic only and is not bug evidence:</p>
+  <p><img src="screenshots/simulator-startup-diagnostic.png" alt="Normal counter app initial screen with value zero"></p>
+  <p>Flow YAML parsed successfully with Ruby's YAML parser. Maestro produced no execution
+    screenshot or HTML report because device initialization failed before the first command.</p>
+</body>
+</html>

@@ -1,0 +1,9 @@
+appId: com.example.flutterBatchTwoAssignment
+name: Counter increments by one
+---
+- launchApp:
+    clearState: true
+- assertVisible: "0"
+- tapOn:
+    point: "263,496"
+- assertVisible: "1"
