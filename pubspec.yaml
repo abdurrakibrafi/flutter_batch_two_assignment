@@ -37,6 +37,7 @@ dependencies:
   google_fonts: ^8.2.1
   get: ^4.7.3
   sign_in_button: ^5.0.0
+  introduction_screen:
 
 dev_dependencies:
   flutter_test:

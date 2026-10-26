@@ -1,6 +1,10 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
 import '../../constant/app_colors.dart';
+import '../auth_view/login_view.dart';
+import '../on_boarding_view/on_boarding_view.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -16,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     Timer(const Duration(seconds: 2), () {
       if (!mounted) return;
-      // route
+      Get.to(OnBordView());
     });
   }
 

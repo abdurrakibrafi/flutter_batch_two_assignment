@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_batch_two_assignment/view/counter_view/counter_view_using_getx.dart';
-import 'package:flutter_batch_two_assignment/view/counter_view/generel_usages_of_state_view.dart';
+import 'package:flutter_batch_two_assignment/view/splash_view/splash_view.dart';
 import 'package:get/get.dart';
 
 void main() {
@@ -14,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Flutter Batch Task',
-      home: CounterScreenUsingGet(),
+      home: SplashScreen(),
     );
   }
 }
