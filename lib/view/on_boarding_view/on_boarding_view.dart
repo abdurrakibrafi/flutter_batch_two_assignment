@@ -1,5 +1,7 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_batch_two_assignment/view/on_boarding_view/widget/on_board_widget.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
 import '../auth_view/login_view.dart';
@@ -20,104 +22,12 @@ class _OnBordViewState extends State<OnBordView> {
 
   int currentPage = 0;
 
-  void _goToLogin() {
-    Navigator.pushAndRemoveUntil(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const LoginScreen(),
-      ),
-          (route) => false,
-    );
-  }
-
   void _nextPage() {
     if (currentPage == 2) {
-      _goToLogin();
+      Get.off(LoginScreen());
     } else {
       _introKey.currentState?.next();
     }
-  }
-
-  Widget _buildPage({
-    required String image,
-    required String title,
-    required String description,
-    required String number,
-  }) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        // Illustration Background
-        Container(
-          height: 280,
-          width: double.infinity,
-          padding: const EdgeInsets.all(25),
-          decoration: BoxDecoration(
-            color: const Color(0xFFF7FCEB),
-            borderRadius: BorderRadius.circular(28),
-          ),
-          child: Image.asset(
-            image,
-            fit: BoxFit.contain,
-            errorBuilder: (context, error, stackTrace) {
-              return const Icon(
-                Icons.task_alt_rounded,
-                size: 110,
-                color: primaryColor,
-              );
-            },
-          ),
-        ),
-
-        const SizedBox(height: 35),
-
-        // Page number
-        Container(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 14,
-            vertical: 7,
-          ),
-          decoration: BoxDecoration(
-            color: const Color(0xFFF0F9DE),
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: Text(
-            'STEP $number OF 03',
-            style: const TextStyle(
-              color: primaryColor,
-              fontSize: 11,
-              fontWeight: FontWeight.w700,
-              letterSpacing: 1.5,
-            ),
-          ),
-        ),
-
-        const SizedBox(height: 18),
-
-        Text(
-          title,
-          textAlign: TextAlign.center,
-          style: const TextStyle(
-            fontSize: 25,
-            fontWeight: FontWeight.bold,
-            color: darkColor,
-            height: 1.25,
-          ),
-        ),
-
-        const SizedBox(height: 14),
-
-        Text(
-          description,
-          textAlign: TextAlign.center,
-          style: const TextStyle(
-            fontSize: 14,
-            color: greyColor,
-            height: 1.7,
-          ),
-        ),
-      ],
-    );
   }
 
   @override
@@ -134,12 +44,12 @@ class _OnBordViewState extends State<OnBordView> {
               pages: [
                 PageViewModel(
                   titleWidget: const SizedBox.shrink(),
-                  bodyWidget: _buildPage(
+                  bodyWidget: OnboardingPageWidget(
                     image: 'assets/images/onboarding_1.png',
                     number: '01',
                     title: 'Manage Everything\nin One Place',
                     description:
-                    'Create, organize, and manage all your '
+                        'Create, organize, and manage all your '
                         'personal and work tasks effortlessly. '
                         'Everything you need is right here.',
                   ),
@@ -148,12 +58,12 @@ class _OnBordViewState extends State<OnBordView> {
 
                 PageViewModel(
                   titleWidget: const SizedBox.shrink(),
-                  bodyWidget: _buildPage(
+                  bodyWidget: OnboardingPageWidget(
                     image: 'assets/images/onboarding_2.png',
                     number: '02',
                     title: 'Focus on What\nMatters Most',
                     description:
-                    'Set priorities, manage deadlines, and '
+                        'Set priorities, manage deadlines, and '
                         'stay focused on the tasks that help '
                         'you achieve your goals.',
                   ),
@@ -162,12 +72,12 @@ class _OnBordViewState extends State<OnBordView> {
 
                 PageViewModel(
                   titleWidget: const SizedBox.shrink(),
-                  bodyWidget: _buildPage(
+                  bodyWidget: OnboardingPageWidget(
                     image: 'assets/images/onboarding_3.png',
                     number: '03',
                     title: 'Visualize Progress,\nStay on Track',
                     description:
-                    'Track completed tasks, monitor your '
+                        'Track completed tasks, monitor your '
                         'progress, and reach your goals with '
                         'a clear and organized workflow.',
                   ),
@@ -181,8 +91,12 @@ class _OnBordViewState extends State<OnBordView> {
                 });
               },
 
-              onDone: _goToLogin,
-              onSkip: _goToLogin,
+              onDone: () {
+                Get.off(() => LoginScreen());
+              },
+              onSkip: () {
+                Get.off(() => LoginScreen());
+              },
 
               showNextButton: false,
               showDoneButton: false,
@@ -199,8 +113,7 @@ class _OnBordViewState extends State<OnBordView> {
               left: 20,
               right: 20,
               child: Row(
-                mainAxisAlignment:
-                MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   GestureDetector(
                     onTap: () {
@@ -226,7 +139,9 @@ class _OnBordViewState extends State<OnBordView> {
                   ),
 
                   TextButton(
-                    onPressed: _goToLogin,
+                    onPressed: () {
+                      Get.off(() => LoginScreen());
+                    },
                     child: const Text(
                       'Skip',
                       style: TextStyle(
@@ -250,25 +165,20 @@ class _OnBordViewState extends State<OnBordView> {
                 children: [
                   // Custom animated dots
                   Row(
-                    mainAxisAlignment:
-                    MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: List.generate(3, (index) {
                       final isActive = currentPage == index;
 
                       return AnimatedContainer(
-                        duration:
-                        const Duration(milliseconds: 300),
-                        margin: const EdgeInsets.symmetric(
-                          horizontal: 4,
-                        ),
+                        duration: const Duration(milliseconds: 300),
+                        margin: const EdgeInsets.symmetric(horizontal: 4),
                         height: 7,
                         width: isActive ? 28 : 7,
                         decoration: BoxDecoration(
                           color: isActive
                               ? primaryColor
                               : const Color(0xFFE1E5E9),
-                          borderRadius:
-                          BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(10),
                         ),
                       );
                     }),
@@ -287,28 +197,21 @@ class _OnBordViewState extends State<OnBordView> {
                         foregroundColor: Colors.white,
                         elevation: 0,
                         shape: RoundedRectangleBorder(
-                          borderRadius:
-                          BorderRadius.circular(14),
+                          borderRadius: BorderRadius.circular(14),
                         ),
                       ),
                       child: Row(
-                        mainAxisAlignment:
-                        MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            currentPage == 2
-                                ? 'Get Started'
-                                : 'Next',
+                            currentPage == 2 ? 'Get Started' : 'Next',
                             style: const TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
                           const SizedBox(width: 10),
-                          const Icon(
-                            Icons.arrow_forward_rounded,
-                            size: 20,
-                          ),
+                          const Icon(Icons.arrow_forward_rounded, size: 20),
                         ],
                       ),
                     ),
@@ -326,13 +229,8 @@ class _OnBordViewState extends State<OnBordView> {
     return const PageDecoration(
       pageColor: Colors.white,
       titlePadding: EdgeInsets.zero,
-      bodyPadding: EdgeInsets.only(
-        top: 90,
-        bottom: 140,
-      ),
-      contentMargin: EdgeInsets.symmetric(
-        horizontal: 24,
-      ),
+      bodyPadding: EdgeInsets.only(top: 90, bottom: 140),
+      contentMargin: EdgeInsets.symmetric(horizontal: 24),
       imagePadding: EdgeInsets.zero,
       bodyAlignment: Alignment.center,
     );
