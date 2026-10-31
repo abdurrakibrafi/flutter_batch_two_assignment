@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_batch_two_assignment/view/splash_view/splash_view.dart';
+import 'package:flutter_batch_two_assignment/view/navigation_menu/navigation_menu.dart';
 import 'package:get/get.dart';
 
 void main() {
@@ -11,9 +11,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return const GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Batch Task',
-      home: SplashScreen(),
+      home: NavigationMenu(),
     );
   }
 }

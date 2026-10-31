@@ -7,9 +7,10 @@ class HobbyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // 1. Background Color
+
       backgroundColor: Colors.green,
-      // 2. App Bar
+
+
       appBar: AppBar(
         backgroundColor: Colors.amber,
         centerTitle: true,
@@ -22,8 +23,6 @@ class HobbyScreen extends StatelessWidget {
           ),
         ),
       ),
-
-      // 3. Body
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16),
@@ -31,8 +30,9 @@ class HobbyScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
 
+
+
             children: [
-              // Hobby Title
               Text(
                 'Reading Books',
                 style: GoogleFonts.poppins(
@@ -61,7 +61,6 @@ class HobbyScreen extends StatelessWidget {
               const SizedBox(height: 20),
 
               // Hobby Image
-              // you can add image from asset or network using image.asset or image.network
               Image.network(
                 'https://images.unsplash.com/photo-1507842217343-583bb7270b66',
                 height: 220,
