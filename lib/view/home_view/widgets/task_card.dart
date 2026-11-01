@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_batch_two_assignment/constant/app_colors.dart';
 
 class TaskCard extends StatelessWidget {
   final String title;
@@ -18,9 +17,7 @@ class TaskCard extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
         image: const DecorationImage(
-          image: AssetImage(
-            "assets/images/backgroundImage.png"
-          ),
+          image: AssetImage("assets/images/backgroundImage.png"),
           fit: BoxFit.cover,
         ),
         boxShadow: [
@@ -32,45 +29,32 @@ class TaskCard extends StatelessWidget {
         ],
       ),
       child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Row(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: const Icon(
-                Icons.assignment_turned_in,
-                color: AppColors.primary,
-                size: 30,
+            // Using asset image as requested
+            Image.asset(
+              'assets/images/task_frame.png',
+              height: 45,
+              width: 45,
+            ),
+            const SizedBox(height: 16),
+            Text(
+              title,
+              style: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
               ),
             ),
-            const SizedBox(width: 16),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black87,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    description,
-                    style: TextStyle(
-                      fontSize: 13,
-                      color: Colors.grey[800],
-                      height: 1.4,
-                    ),
-                  ),
-                ],
+            const SizedBox(height: 8),
+            Text(
+              description,
+              style: TextStyle(
+                fontSize: 14,
+                color: Colors.grey[700],
+                height: 1.5,
               ),
             ),
           ],

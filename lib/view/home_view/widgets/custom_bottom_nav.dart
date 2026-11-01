@@ -14,13 +14,17 @@ class CustomBottomNav extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 80,
+      height: 70,
       decoration: BoxDecoration(
         color: Colors.white,
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(25),
+          topRight: Radius.circular(25),
+        ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 10,
+            color: Colors.black.withOpacity(0.1),
+            blurRadius: 20,
             offset: const Offset(0, -5),
           ),
         ],
@@ -28,7 +32,7 @@ class CustomBottomNav extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _buildNavItem(0, Icons.home_outlined, 'Home'),
+          _buildNavItem(0, Icons.home_outlined, 'My Tasks'),
           _buildNavItem(1, Icons.add, 'Add Task'),
           _buildNavItem(2, Icons.person_outline, 'Profile'),
         ],
@@ -38,32 +42,65 @@ class CustomBottomNav extends StatelessWidget {
 
   Widget _buildNavItem(int index, IconData icon, String label) {
     bool isSelected = currentIndex == index;
+
     return GestureDetector(
       onTap: () => onTap(index),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              color: isSelected ? AppColors.primary : Colors.transparent,
-              shape: BoxShape.circle,
-            ),
-            child: Icon(
-              icon,
-              color: isSelected ? Colors.white : Colors.grey,
-              size: 28,
-            ),
-          ),
-          Text(
-            label,
-            style: TextStyle(
-              fontSize: 12,
-              color: isSelected ? Colors.black : Colors.grey,
-              fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-            ),
-          ),
-        ],
+      behavior: HitTestBehavior.opaque,
+      child: SizedBox(
+        width: 100,
+        child: Stack(
+          alignment: Alignment.center,
+          clipBehavior: Clip.none,
+          children: [
+            if (isSelected)
+              Positioned(
+                top: -30,
+                child: Container(
+                  width: 60,
+                  height: 60,
+                  decoration: BoxDecoration(
+                    color: AppColors.primary,
+                    shape: BoxShape.circle,
+                    border: Border.all(color: Colors.white, width: 5),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.1),
+                        blurRadius: 10,
+                        offset: const Offset(0, 5),
+                      ),
+                    ],
+                  ),
+                  child: Icon(
+                    // Home icon should be filled if selected to match typical design, 
+                    // but the image shows a specific outline home.
+                    index == 0 ? Icons.home_outlined : icon,
+                    color: Colors.white,
+                    size: 32,
+                  ),
+                ),
+              )
+            else
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(
+                    icon,
+                    color: Colors.black87,
+                    size: 28,
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    label,
+                    style: const TextStyle(
+                      fontSize: 12,
+                      color: Colors.black87,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
+              ),
+          ],
+        ),
       ),
     );
   }
