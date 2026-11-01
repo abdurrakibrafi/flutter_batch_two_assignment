@@ -3,14 +3,14 @@ import 'package:flutter_batch_two_assignment/view/home_view/home_view.dart';
 import 'package:flutter_batch_two_assignment/view/profile_view/proflle_view.dart';
 import 'package:flutter_batch_two_assignment/view/home_view/widgets/custom_bottom_nav.dart';
 
-class NavigationMenu extends StatefulWidget {
-  const NavigationMenu({super.key});
+class DashboardView extends StatefulWidget {
+  const DashboardView({super.key});
 
   @override
-  State<NavigationMenu> createState() => _NavigationMenuState();
+  State<DashboardView> createState() => _DashboardViewState();
 }
 
-class _NavigationMenuState extends State<NavigationMenu> {
+class _DashboardViewState extends State<DashboardView> {
   int _selectedIndex = 0;
 
   final List<Widget> _screens = [

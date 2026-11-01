@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return const GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Batch Task',
-      home: NavigationMenu(),
+      home: DashboardView(),
     );
   }
 }

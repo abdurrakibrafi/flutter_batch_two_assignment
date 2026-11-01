@@ -1,15 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_batch_two_assignment/view/profile_view/help_support_view.dart';
 import 'package:flutter_batch_two_assignment/view/profile_view/widgets/profile_menu_item.dart';
+import 'package:get/get.dart';
 
 class ProflleView extends StatelessWidget {
   const ProflleView({super.key});
+
+  void _showLogoutDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          title: const Text("Logout"),
+          content: const Text("Are you sure you want to log out?"),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text("Cancel", style: TextStyle(color: Colors.grey)),
+            ),
+            TextButton(
+              onPressed: () {
+                Get.back();
+                Get.snackbar("Logged Out", "You have been successfully logged out",
+                    snackPosition: SnackPosition.BOTTOM);
+              },
+              child: const Text("Logout", style: TextStyle(color: Colors.red)),
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
         children: [
-          // Top Section: Cover Image and Profile Picture
           SizedBox(
             height: 280,
             child: Stack(
@@ -97,13 +125,20 @@ class ProflleView extends StatelessWidget {
                 ProfileMenuItem(
                   icon: Icons.help_outline,
                   title: 'Help/Support',
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const HelpSupportView(),
+                      ),
+                    );
+                  },
                 ),
                 ProfileMenuItem(
                   icon: Icons.logout,
                   title: 'Log Out',
                   iconColor: Colors.red,
-                  onTap: () {},
+                  onTap: () => _showLogoutDialog(context),
                 ),
                 const SizedBox(height: 30),
               ],
