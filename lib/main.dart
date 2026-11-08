@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_batch_two_assignment/view/auth_view/login_view.dart';
 import 'package:flutter_batch_two_assignment/view/navigation_menu/navigation_menu.dart';
 import 'package:get/get.dart';
 
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
     return const GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Batch Task',
-      home: DashboardView(),
+      home: LoginScreen(),
     );
   }
 }

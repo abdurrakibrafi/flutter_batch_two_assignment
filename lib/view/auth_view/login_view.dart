@@ -1,9 +1,14 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_batch_two_assignment/utils/custom_button_widget.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/src/extension_instance.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import '../../constant/app_colors.dart';
+import '../../utils/custom_loader.dart';
+import '../../utils/custom_toast_message.dart';
 import '../../utils/cutom_text_filed.dart';
 import '../../utils/primary_button.dart';
-
+import 'controller/login_controller.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -13,8 +18,10 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
+  final LoginController loginController = Get.put(LoginController());
+
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   bool rememberMe = false;
   bool obscurePassword = true;
@@ -32,16 +39,11 @@ class _LoginScreenState extends State<LoginScreen> {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 18,
-          ),
+          padding: const EdgeInsets.symmetric(horizontal: 18),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
-                height:
-                MediaQuery.sizeOf(context).height * 0.23,
-              ),
+              SizedBox(height: MediaQuery.sizeOf(context).height * 0.23),
 
               const Text(
                 'Welcome Back!',
@@ -56,10 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
               const Text(
                 'Stay productive and take control of your tasks.',
-                style: TextStyle(
-                  fontSize: 13,
-                  color: AppColors.textSecondary,
-                ),
+                style: TextStyle(fontSize: 13, color: AppColors.textSecondary),
               ),
 
               const SizedBox(height: 28),
@@ -110,10 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   const SizedBox(width: 6),
-                  const Text(
-                    'Remember me',
-                    style: TextStyle(fontSize: 12),
-                  ),
+                  const Text('Remember me', style: TextStyle(fontSize: 12)),
                 ],
               ),
 
@@ -121,14 +117,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
               Row(
                 children: [
-                  Expanded(
-                    child: Divider(
-                      color: Colors.grey.shade400,
-                    ),
-                  ),
+                  Expanded(child: Divider(color: Colors.grey.shade400)),
                   const Padding(
-                    padding:
-                    EdgeInsets.symmetric(horizontal: 10),
+                    padding: EdgeInsets.symmetric(horizontal: 10),
                     child: Text(
                       'OR',
                       style: TextStyle(
@@ -137,11 +128,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
-                  Expanded(
-                    child: Divider(
-                      color: Colors.grey.shade400,
-                    ),
-                  ),
+                  Expanded(child: Divider(color: Colors.grey.shade400)),
                 ],
               ),
 
@@ -159,10 +146,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     },
                     child: const Text(
                       'Sign Up',
-                      style: TextStyle(
-                        color: AppColors.primary,
-                        fontSize: 12,
-                      ),
+                      style: TextStyle(color: AppColors.primary, fontSize: 12),
                     ),
                   ),
                 ],
@@ -170,13 +154,42 @@ class _LoginScreenState extends State<LoginScreen> {
 
               const SizedBox(height: 12),
 
-              PrimaryButton(
-                title: 'Log In',
-                showArrow: false,
-                onPressed: () {
-                  // TODO: Validate fields and call login API
-                },
-              ),
+              // Login Button
+              Obx(() {
+                return loginController.isLoading.value
+                    ? Center(child: CustomLoader())
+                    : SizedBox(
+                        height: 55,
+                        width: double.infinity,
+                        child: CustomButtonWidget(
+                          btnColor: AppColors.primary,
+                          onTap: () {
+                            final email = emailController.text.trim();
+                            final password = passwordController.text.trim();
+
+                            // Basic validation
+                            if (email.isEmpty || password.isEmpty) {
+                              CustomToast.showToast(
+                                "All fields are required",
+                                isError: true,
+                              );
+                            } else if (!email.contains('@')) {
+                              CustomToast.showToast(
+                                "Invalid email address",
+                                isError: true,
+                              );
+                            } else {
+                              loginController.login(
+                                email: email,
+                                password: password,
+                              );
+                            }
+                          },
+                          iconWant: false,
+                          btnText: 'Log In',
+                        ),
+                      );
+              }),
             ],
           ),
         ),
