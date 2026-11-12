@@ -18,6 +18,11 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+
+
+
+
+
   final LoginController loginController = Get.put(LoginController());
 
   final TextEditingController emailController = TextEditingController();
@@ -65,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
               CustomTextField(
                 label: 'Email Address',
-                hint: 'michelle.rivera@example.com',
+                hint: 'Enter you mail',
                 controller: emailController,
               ),
 
@@ -154,7 +159,12 @@ class _LoginScreenState extends State<LoginScreen> {
 
               const SizedBox(height: 12),
 
-              // Login Button
+
+
+
+
+
+
               Obx(() {
                 return loginController.isLoading.value
                     ? Center(child: CustomLoader())
