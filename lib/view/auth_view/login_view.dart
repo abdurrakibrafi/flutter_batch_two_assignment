@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_batch_two_assignment/utils/custom_button_widget.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_instance/src/extension_instance.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:get/get.dart';
 import '../../constant/app_colors.dart';
 import '../../utils/custom_loader.dart';
 import '../../utils/custom_toast_message.dart';
 import '../../utils/cutom_text_filed.dart';
-import '../../utils/primary_button.dart';
 import 'controller/login_controller.dart';
+import 'signup_view.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -18,11 +16,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-
-
-
-
-
   final LoginController loginController = Get.put(LoginController());
 
   final TextEditingController emailController = TextEditingController();
@@ -49,7 +42,6 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: MediaQuery.sizeOf(context).height * 0.23),
-
               const Text(
                 'Welcome Back!',
                 style: TextStyle(
@@ -58,24 +50,18 @@ class _LoginScreenState extends State<LoginScreen> {
                   color: AppColors.textPrimary,
                 ),
               ),
-
               const SizedBox(height: 8),
-
               const Text(
                 'Stay productive and take control of your tasks.',
                 style: TextStyle(fontSize: 13, color: AppColors.textSecondary),
               ),
-
               const SizedBox(height: 28),
-
               CustomTextField(
                 label: 'Email Address',
                 hint: 'Enter you mail',
                 controller: emailController,
               ),
-
               const SizedBox(height: 18),
-
               CustomTextField(
                 label: 'Password',
                 hint: 'Enter your password',
@@ -95,9 +81,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   },
                 ),
               ),
-
               const SizedBox(height: 8),
-
               Row(
                 children: [
                   SizedBox(
@@ -117,9 +101,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   const Text('Remember me', style: TextStyle(fontSize: 12)),
                 ],
               ),
-
               const SizedBox(height: 22),
-
               Row(
                 children: [
                   Expanded(child: Divider(color: Colors.grey.shade400)),
@@ -136,9 +118,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   Expanded(child: Divider(color: Colors.grey.shade400)),
                 ],
               ),
-
               const SizedBox(height: 20),
-
               Row(
                 children: [
                   const Text(
@@ -147,7 +127,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   TextButton(
                     onPressed: () {
-                      // TODO: Navigate to Sign Up screen
+                      Get.to(() => const SignupScreen());
                     },
                     child: const Text(
                       'Sign Up',
@@ -156,18 +136,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ],
               ),
-
               const SizedBox(height: 12),
-
-
-
-
-
-
-
               Obx(() {
                 return loginController.isLoading.value
-                    ? Center(child: CustomLoader())
+                    ? const Center(child: CustomLoader())
                     : SizedBox(
                         height: 55,
                         width: double.infinity,
@@ -177,7 +149,6 @@ class _LoginScreenState extends State<LoginScreen> {
                             final email = emailController.text.trim();
                             final password = passwordController.text.trim();
 
-                            // Basic validation
                             if (email.isEmpty || password.isEmpty) {
                               CustomToast.showToast(
                                 "All fields are required",

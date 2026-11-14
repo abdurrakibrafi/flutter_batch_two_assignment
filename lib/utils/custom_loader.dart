@@ -6,10 +6,10 @@ import '../constant/app_colors.dart';
 class CustomLoader extends StatelessWidget {
   final double size;
 
-  CustomLoader({
-    Key? key,
+  const CustomLoader({
+    super.key,
     this.size = 50.0,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

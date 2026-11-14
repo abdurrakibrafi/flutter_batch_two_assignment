@@ -1,4 +1,3 @@
-
 import 'local_storage.dart';
 
 class ApiUrl {
@@ -10,5 +9,7 @@ class ApiUrl {
   /// login er endpoint
   static const String login = "$baseUrl/auth/signin";
 
-  static const String signUpErApi = "$baseUrl/auth/signup";
+  static const String signUp = "$baseUrl/auth/signup";
+  
+  static const String verifyOtp = "$baseUrl/auth/verify-otp";
 }

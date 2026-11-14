@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import '../constant/app_colors.dart';
 
@@ -8,6 +7,7 @@ class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
   final bool obscureText;
   final Widget? suffixIcon;
+  final TextInputType? keyboardType;
 
   const CustomTextField({
     super.key,
@@ -16,6 +16,7 @@ class CustomTextField extends StatelessWidget {
     required this.controller,
     this.obscureText = false,
     this.suffixIcon,
+    this.keyboardType,
   });
 
   @override
@@ -34,6 +35,7 @@ class CustomTextField extends StatelessWidget {
         TextFormField(
           controller: controller,
           obscureText: obscureText,
+          keyboardType: keyboardType,
           decoration: InputDecoration(
             hintText: hint,
             hintStyle: const TextStyle(
