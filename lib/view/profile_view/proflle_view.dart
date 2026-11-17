@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_batch_two_assignment/constant/api_urls.dart';
 import 'package:flutter_batch_two_assignment/view/profile_view/help_support_view.dart';
+import 'package:flutter_batch_two_assignment/view/profile_view/legal_view.dart';
 import 'package:flutter_batch_two_assignment/view/profile_view/widgets/profile_menu_item.dart';
 import 'package:get/get.dart';
 
@@ -115,12 +117,22 @@ class ProflleView extends StatelessWidget {
                 ProfileMenuItem(
                   icon: Icons.description_outlined,
                   title: 'Terms & Condition',
-                  onTap: () {},
+                  onTap: () {
+                    Get.to(() => const LegalView(
+                          title: 'Terms & Condition',
+                          apiUrl: ApiUrl.termsAndConditions,
+                        ));
+                  },
                 ),
                 ProfileMenuItem(
                   icon: Icons.privacy_tip_outlined,
                   title: 'Privacy policy',
-                  onTap: () {},
+                  onTap: () {
+                    Get.to(() => const LegalView(
+                          title: 'Privacy policy',
+                          apiUrl: ApiUrl.privacyPolicy,
+                        ));
+                  },
                 ),
                 ProfileMenuItem(
                   icon: Icons.help_outline,

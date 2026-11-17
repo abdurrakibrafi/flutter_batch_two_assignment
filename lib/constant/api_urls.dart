@@ -12,4 +12,8 @@ class ApiUrl {
   static const String signUp = "$baseUrl/auth/signup";
   
   static const String verifyOtp = "$baseUrl/auth/verify-otp";
+
+  static const String termsAndConditions = "$baseUrl/terms-and-conditions";
+  
+  static const String privacyPolicy = "$baseUrl/privacy-policy";
 }

@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'dart:convert';
+import 'package:flutter_batch_two_assignment/view/navigation_menu/navigation_menu.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import '../../../constant/api_urls.dart';
@@ -50,6 +51,8 @@ class LoginController extends GetxController {
         await _storageService.write('uuid', id);
 
         CustomToast.showToast("Login Successfully done ");
+
+        Get.to(()=> DashboardView());
 
 
       } else {
