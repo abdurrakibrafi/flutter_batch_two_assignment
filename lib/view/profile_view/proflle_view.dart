@@ -114,6 +114,8 @@ class ProflleView extends StatelessWidget {
                 ),
                 const SizedBox(height: 15),
 
+
+                /// terms and conditions dekhabe
                 ProfileMenuItem(
                   icon: Icons.description_outlined,
                   title: 'Terms & Condition',
@@ -124,6 +126,10 @@ class ProflleView extends StatelessWidget {
                         ));
                   },
                 ),
+
+
+                /// eikhane click korle amk privacy policy dekhabe
+
                 ProfileMenuItem(
                   icon: Icons.privacy_tip_outlined,
                   title: 'Privacy policy',
@@ -134,6 +140,10 @@ class ProflleView extends StatelessWidget {
                         ));
                   },
                 ),
+
+
+
+
                 ProfileMenuItem(
                   icon: Icons.help_outline,
                   title: 'Help/Support',

@@ -41,7 +41,11 @@ class _LegalViewState extends State<LegalView> {
           ),
         ),
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new, color: AppColors.primary, size: 18),
+          icon: const Icon(
+            Icons.arrow_back_ios_new,
+            color: AppColors.primary,
+            size: 18,
+          ),
           onPressed: () => Get.back(),
         ),
       ),
@@ -53,14 +57,12 @@ class _LegalViewState extends State<LegalView> {
         final legalData = controller.legalData.value.data;
 
         if (legalData == null) {
-          return const Center(child: Text("No content available."));
+          return const Center(child: Text("No data available."));
         }
 
         return SingleChildScrollView(
           padding: const EdgeInsets.all(10.0),
-          child: HTMLView(
-            htmlData: legalData.html ?? legalData.content ?? "",
-          ),
+          child: HTMLView(htmlData: legalData.html ?? legalData.content ?? ""),
         );
       }),
     );

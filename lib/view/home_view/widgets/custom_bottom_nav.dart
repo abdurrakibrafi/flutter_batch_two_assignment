@@ -71,7 +71,7 @@ class CustomBottomNav extends StatelessWidget {
                     ],
                   ),
                   child: Icon(
-                    // Home icon should be filled if selected to match typical design, 
+                    // Home icon should be filled if selected to match typical design,
                     // but the image shows a specific outline home.
                     index == 0 ? Icons.home_outlined : icon,
                     color: Colors.white,
@@ -83,11 +83,7 @@ class CustomBottomNav extends StatelessWidget {
               Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(
-                    icon,
-                    color: Colors.black87,
-                    size: 28,
-                  ),
+                  Icon(icon, color: Colors.black87, size: 28),
                   const SizedBox(height: 4),
                   Text(
                     label,

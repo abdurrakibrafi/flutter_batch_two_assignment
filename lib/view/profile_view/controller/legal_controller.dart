@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter_batch_two_assignment/constant/api_urls.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import '../../../utils/custom_toast_message.dart';
@@ -6,12 +7,12 @@ import '../model/legel_model.dart';
 
 class LegalController extends GetxController {
   var isLoading = false.obs;
+  /// eikahen data
   var legalData = LegalModel().obs;
 
   Future<void> fetchLegalContent(String url) async {
     try {
       isLoading(true);
-      // Reset data before fetching
       legalData.value = LegalModel();
 
       var response = await http.get(

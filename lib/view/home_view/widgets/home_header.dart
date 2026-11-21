@@ -29,10 +29,7 @@ class HomeHeader extends StatelessWidget {
               ),
               Text(
                 'Welcome to Task Manager',
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.grey[600],
-                ),
+                style: TextStyle(fontSize: 14, color: Colors.grey[600]),
               ),
             ],
           ),

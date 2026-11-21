@@ -22,19 +22,12 @@ class CategoryItem extends StatelessWidget {
             color: color.withOpacity(0.1),
             borderRadius: BorderRadius.circular(15),
           ),
-          child: Icon(
-            icon,
-            color: color,
-            size: 30,
-          ),
+          child: Icon(icon, color: color, size: 30),
         ),
         const SizedBox(height: 8),
         Text(
           title,
-          style: const TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-          ),
+          style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
         ),
       ],
     );
