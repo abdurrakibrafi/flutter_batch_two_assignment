@@ -4,13 +4,14 @@ import 'package:flutter_batch_two_assignment/constant/app_colors.dart';
 import 'package:flutter_batch_two_assignment/utils/custom_loader.dart';
 import 'package:flutter_batch_two_assignment/view/home_view/widgets/home_header.dart';
 import 'package:flutter_batch_two_assignment/view/home_view/widgets/task_card.dart';
-import 'package:flutter_batch_two_assignment/view/task_view/controller/task_controller.dart';
+import 'package:flutter_batch_two_assignment/view/task_view/controller/delete_task_controller.dart';
+import 'package:flutter_batch_two_assignment/view/task_view/controller/get_all_task_controller.dart';
 import 'package:flutter_batch_two_assignment/view/task_view/model/task_model.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
 
-  void _confirmDelete(TaskController controller, TaskModel task) {
+  void _confirmDelete(DeleteTaskController controller, TaskModel task) {
     Get.dialog(
       AlertDialog(
         backgroundColor: Colors.white,
@@ -54,7 +55,9 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TaskController taskController = Get.find<TaskController>();
+    final GetAllTaskController taskController = Get.find<GetAllTaskController>();
+    final DeleteTaskController deleteTaskController =
+        Get.find<DeleteTaskController>();
 
     return Container(
       color: Colors.white,
@@ -142,10 +145,10 @@ class HomeView extends StatelessWidget {
                                   title: task.title,
                                   description: task.content,
                                   status: task.status,
-                                  isDeleting: taskController.deletingIds
+                                  isDeleting: deleteTaskController.deletingIds
                                       .contains(task.id),
                                   onDelete: () =>
-                                      _confirmDelete(taskController, task),
+                                      _confirmDelete(deleteTaskController, task),
                                 ),
                               );
                             },

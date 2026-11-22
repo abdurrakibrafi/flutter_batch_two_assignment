@@ -5,7 +5,7 @@ import '../../utils/custom_loader.dart';
 import '../../utils/custom_toast_message.dart';
 import '../../utils/cutom_text_filed.dart';
 import '../../utils/primary_button.dart';
-import 'controller/task_controller.dart';
+import 'controller/create_task_controller.dart';
 import 'model/task_model.dart';
 
 class AddTaskView extends StatefulWidget {
@@ -19,7 +19,7 @@ class AddTaskView extends StatefulWidget {
 }
 
 class _AddTaskViewState extends State<AddTaskView> {
-  final TaskController taskController = Get.find<TaskController>();
+  final CreateTaskController createTaskController = Get.find<CreateTaskController>();
 
   final TextEditingController titleController = TextEditingController();
   final TextEditingController contentController = TextEditingController();
@@ -44,7 +44,7 @@ class _AddTaskViewState extends State<AddTaskView> {
 
     FocusScope.of(context).unfocus();
 
-    final created = await taskController.createTask(
+    final created = await createTaskController.createTask(
       title: title,
       content: content,
       status: selectedStatus,
@@ -139,7 +139,7 @@ class _AddTaskViewState extends State<AddTaskView> {
                 ),
                 const SizedBox(height: 32),
                 Obx(
-                  () => taskController.isCreating.value
+                  () => createTaskController.isLoading.value
                       ? const SizedBox(
                           height: 48,
                           child: CustomLoader(size: 36),
