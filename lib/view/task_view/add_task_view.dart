@@ -111,7 +111,9 @@ class _AddTaskViewState extends State<AddTaskView> {
                 Wrap(
                   spacing: 10,
                   runSpacing: 10,
-                  children: TaskStatus.values.map((status) {
+                  /// create er somoy shudhu pending ar in progress dekhabo
+                  children: [TaskStatus.pending, TaskStatus.inProgress]
+                      .map((status) {
                     final isSelected = status == selectedStatus;
                     return ChoiceChip(
                       label: Text(status.label),
