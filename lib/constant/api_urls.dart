@@ -19,4 +19,7 @@ class ApiUrl {
 
   /// GET (list) / POST (create) -- delete er jonno "$tasks/{id}"
   static const String tasks = "$baseUrl/tasks";
+
+  /// GET -- login kora user er profile
+  static const String profile = "$baseUrl/user/profile";
 }
