@@ -21,7 +21,9 @@ class ProflleView extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15),
+          ),
           title: const Text("Logout"),
           content: const Text("Are you sure you want to log out?"),
           actions: [
@@ -36,8 +38,11 @@ class ProflleView extends StatelessWidget {
 
                 /// login screen e niye jai, pichoner sob page remove kore
                 Get.offAll(() => LoginScreen());
-                Get.snackbar("Logged Out", "You have been successfully logged out",
-                    snackPosition: SnackPosition.BOTTOM);
+                Get.snackbar(
+                  "Logged Out",
+                  "You have been successfully logged out",
+                  snackPosition: SnackPosition.BOTTOM,
+                );
               },
               child: const Text("Logout", style: TextStyle(color: Colors.red)),
             ),
@@ -52,7 +57,8 @@ class ProflleView extends StatelessWidget {
     final GetProfileController controller = Get.find<GetProfileController>();
 
     return Obx(() {
-      if (controller.isLoading.value && controller.profileData.value.uuid == null) {
+      if (controller.isLoading.value &&
+          controller.profileData.value.uuid == null) {
         return const CustomLoader();
       }
 
@@ -78,7 +84,9 @@ class ProflleView extends StatelessWidget {
                         width: double.infinity,
                         decoration: const BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage('assets/images/profile_cover.png'),
+                            image: AssetImage(
+                              'assets/images/profile_cover.png',
+                            ),
                             fit: BoxFit.cover,
                           ),
                           borderRadius: BorderRadius.only(
@@ -119,7 +127,9 @@ class ProflleView extends StatelessWidget {
                   children: [
                     Flexible(
                       child: Text(
-                        profile.fullName.isEmpty ? 'Unknown User' : profile.fullName,
+                        profile.fullName.isEmpty
+                            ? 'Unknown User'
+                            : profile.fullName,
                         overflow: TextOverflow.ellipsis,
                         style: const TextStyle(
                           fontSize: 22,
@@ -130,7 +140,11 @@ class ProflleView extends StatelessWidget {
                     ),
                     if (profile.isVerified == true) ...[
                       const SizedBox(width: 6),
-                      const Icon(Icons.verified, color: AppColors.primary, size: 20),
+                      const Icon(
+                        Icons.verified,
+                        color: AppColors.primary,
+                        size: 20,
+                      ),
                     ],
                   ],
                 ),
@@ -138,7 +152,10 @@ class ProflleView extends StatelessWidget {
               const SizedBox(height: 4),
               Text(
                 profile.gmail ?? '',
-                style: const TextStyle(fontSize: 14, color: AppColors.textSecondary),
+                style: const TextStyle(
+                  fontSize: 14,
+                  color: AppColors.textSecondary,
+                ),
               ),
               const SizedBox(height: 20),
 
@@ -153,7 +170,6 @@ class ProflleView extends StatelessWidget {
                       title: 'My Profile',
                       onTap: () => Get.to(() => const MyProfileView()),
                     ),
-
 
                     const SizedBox(height: 15),
                     const Text(
@@ -171,10 +187,12 @@ class ProflleView extends StatelessWidget {
                       icon: Icons.description_outlined,
                       title: 'Terms & Condition',
                       onTap: () {
-                        Get.to(() => const LegalView(
-                              title: 'Terms & Condition',
-                              apiUrl: ApiUrl.termsAndConditions,
-                            ));
+                        Get.to(
+                          () => const LegalView(
+                            title: 'Terms & Condition',
+                            apiUrl: ApiUrl.termsAndConditions,
+                          ),
+                        );
                       },
                     ),
 
@@ -183,10 +201,12 @@ class ProflleView extends StatelessWidget {
                       icon: Icons.privacy_tip_outlined,
                       title: 'Privacy policy',
                       onTap: () {
-                        Get.to(() => const LegalView(
-                              title: 'Privacy policy',
-                              apiUrl: ApiUrl.privacyPolicy,
-                            ));
+                        Get.to(
+                          () => const LegalView(
+                            title: 'Privacy policy',
+                            apiUrl: ApiUrl.privacyPolicy,
+                          ),
+                        );
                       },
                     ),
 
